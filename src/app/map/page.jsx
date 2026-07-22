@@ -5,7 +5,7 @@ import nextDynamic from 'next/dynamic';
 import { createClient } from '../../../lib/supabase';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
