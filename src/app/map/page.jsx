@@ -1,11 +1,11 @@
 'use client';
-export const dynamic = 'force-dynamic';
+
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import nextDynamic from 'next/dynamic';
 import { createClient } from '../../../lib/supabase';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-
+export const dynamicParams = true;
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -13,11 +13,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 // Leaflet needs the browser window, so load the map with SSR turned off
-const MapContainer = dynamic(() => import('react-leaflet').then(m => m.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import('react-leaflet').then(m => m.TileLayer), { ssr: false });
-const Marker = dynamic(() => import('react-leaflet').then(m => m.Marker), { ssr: false });
-const Popup = dynamic(() => import('react-leaflet').then(m => m.Popup), { ssr: false });
-
+const MapContainer = nextDynamic(() => import('react-leaflet').then(m => m.MapContainer), { ssr: false });
+const TileLayer = nextDynamic(() => import('react-leaflet').then(m => m.TileLayer), { ssr: false });
+const Marker = nextDynamic(() => import('react-leaflet').then(m => m.Marker), { ssr: false });
+const Popup = nextDynamic(() => import('react-leaflet').then(m => m.Popup), { ssr: false });
 const SEVERITY_COLOR = {
   unrated: 'gray',
   low: 'green',
