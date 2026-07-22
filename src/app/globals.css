@@ -278,3 +278,47 @@ h1, h2, h3, .font-display {
 .badge-in_progress { background: #fed7aa; color: #9a3412; }
 .badge-resolved { background: #d1fae5; color: #065f46; }
 .badge-closed { background: #e5e7eb; color: #374151; }
+/* ---------- Mobile responsiveness ---------- */
+
+@media (max-width: 640px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+  .site-nav__links {
+    flex-wrap: wrap;
+    gap: 0.9rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+  .hero__headline {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+  .hero__actions {
+    flex-direction: column;
+  }
+  .hero__actions a {
+    text-align: center;
+  }
+
+  .how {
+    padding: 2.5rem 1.25rem;
+  }
+  .how__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .route-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .page-container {
+    padding: 1rem 0.75rem;
+  }
+}
