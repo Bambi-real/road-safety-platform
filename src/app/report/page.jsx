@@ -12,7 +12,8 @@ export default function ReportPage() {
   const supabase = createClient();
 
   const [category, setCategory] = useState(CATEGORIES[0]);
-  const [description, setDescription] = useState('');
+const [description, setDescription] = useState('');
+const [manualSeverity, setManualSeverity] = useState('medium');
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
@@ -88,7 +89,7 @@ export default function ReportPage() {
         image_url,
         ai_prediction,
         ai_confidence,
-        severity: aiSeverity,
+       severity: category === 'pothole' ? aiSeverity : manualSeverity,
       });
       if (insertError) throw insertError;
 
@@ -128,6 +129,22 @@ export default function ReportPage() {
               ))}
             </select>
           </label>
+
+          {category !== 'pothole' && (
+            <label className="block">
+              <span className="text-sm font-medium">Severity</span>
+              <select
+                className="input-field"
+                value={manualSeverity}
+                onChange={(e) => setManualSeverity(e.target.value)}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </select>
+            </label>
+          )}
 
           <label className="block">
             <span className="text-sm font-medium">Description</span>
