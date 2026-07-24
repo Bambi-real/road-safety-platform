@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import NavLinks from './components/NavLinks';
 export const metadata = {
   title: "Road Safety Gambia — Report. Track. Fix.",
   description: "AI-powered road hazard reporting for The Gambia",
@@ -19,14 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <nav className="site-nav">
           <a href="/" className="site-nav__brand">Road Safety <span>Gambia</span></a>
-          <div className="site-nav__links">
-            <a href="/report">Report</a>
-            <a href="/map">Map</a>
-            <a href="/my-reports">My Reports</a>
-            <a href="/analytics">Analytics</a>
-            <a href="/admin">Admin</a>
-            <a href="/login">Log in</a>
-          </div>
+          <NavLinks />
         </nav>
         <main>{children}</main>
       </body>
