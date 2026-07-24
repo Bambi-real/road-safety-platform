@@ -159,12 +159,11 @@ const [manualSeverity, setManualSeverity] = useState('medium');
           <label className="block">
             <span className="text-sm font-medium">Photo</span>
             <input
-              className="input-field"
-              type="file"
-              accept="image/*"
-              capture="environment"
-              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-            />
+  className="input-field"
+  type="file"
+  accept="image/*"
+  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+/>
           </label>
 
           <button
