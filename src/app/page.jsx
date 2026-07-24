@@ -1,7 +1,7 @@
 function getSeasonLabel() {
-  const month = new Date().getMonth() + 1; // 1-12
+  const month = new Date().getMonth() + 1;
   const year = new Date().getFullYear();
-  const isRainySeason = month >= 6 && month <= 10; // June–October
+  const isRainySeason = month >= 6 && month <= 10;
   return isRainySeason
     ? `Rainy season, ${year} — The Gambia`
     : `Dry season, ${year} — The Gambia`;
@@ -33,7 +33,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="how" style={{ borderTop: '1px solid var(--line)', maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem 0' }}>
+        <div style={{ maxWidth: '640px' }}>
+          <div className="hero__eyebrow" style={{ color: 'var(--laterite)' }}>The problem</div>
+          <h2 className="font-display" style={{ fontSize: '1.75rem', margin: '0.5rem 0 1rem' }}>
+            Damaged roads go unreported and unfixed.
+          </h2>
+          <p style={{ color: '#4a463f', lineHeight: 1.6 }}>
+            Potholes, floods, and broken infrastructure damage vehicles and
+            cause accidents across The Gambia every rainy season — but there's
+            no central system for citizens to report them, or for road
+            authorities to see where the worst damage actually is. Reports
+            get lost in phone calls and word of mouth. Repairs happen
+            reactively, not where they're needed most.
+          </p>
+        </div>
+      </section>
+
       <section className="how">
+        <div className="hero__eyebrow" style={{ color: 'var(--teal)', marginBottom: '0.5rem' }}>The solution</div>
         <h2 className="font-display" style={{ fontSize: '1.75rem' }}>How it works</h2>
         <div className="how__grid">
           <div className="how__step">
@@ -62,11 +80,14 @@ export default function HomePage() {
       <section className="route-section">
         <div className="route-section__inner">
           <div>
+            <div className="hero__eyebrow" style={{ color: 'var(--hazard)', marginBottom: '0.5rem' }}>The impact</div>
             <h2 className="font-display">From damage to data.</h2>
             <p>
               Every report becomes a data point — hotspots, response times,
-              and hazard trends the road authority can act on, not just a
-              complaint that disappears.
+              and hazard trends the road authority can act on, instead of a
+              complaint that disappears. Fewer accidents, faster repairs,
+              and a national record of road conditions that didn't exist
+              before.
             </p>
           </div>
           <div className="route-line">
