@@ -55,7 +55,13 @@ export default function MyReportsPage() {
               <strong className="capitalize">{r.category.replace('_', ' ')}</strong>
               <span className={`badge badge-${r.status}`}>{STATUS_LABEL[r.status] ?? r.status}</span>
             </div>
-            {r.description && <p className="mb-2" style={{ color: '#4a463f' }}>{r.description}</p>}
+           {r.ai_prediction && (
+  <div className="mb-2" style={{ background: '#f3eee2', borderRadius: 6, padding: '0.6rem 0.8rem', fontSize: '0.85rem' }}>
+    <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--teal)' }}>AI detected:</span>{' '}
+    <strong className="capitalize">{r.ai_prediction}</strong>{' '}
+    <span style={{ color: '#8a8478' }}>({Math.round(r.ai_confidence * 100)}% confidence)</span>
+  </div>
+)}
             <p className="text-xs mb-2" style={{ color: '#8a8478', fontFamily: 'var(--font-mono)' }}>
               {new Date(r.created_at).toLocaleDateString()} · Severity: {r.severity}
             </p>
