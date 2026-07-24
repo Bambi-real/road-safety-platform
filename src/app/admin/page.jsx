@@ -14,8 +14,28 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => { loadReports(); }, []);
-
+ useEffect(() => {
+  async function checkAdminAndLoad() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      setError('You must be logged in.');
+      setLoading(false);
+      return;
+    }
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+    if (profile?.role !== 'admin') {
+      setError('You do not have access to this page.');
+      setLoading(false);
+      return;
+    }
+    loadReports();
+  }
+  checkAdminAndLoad();
+}, []);
   async function loadReports() {
     setLoading(true);
     const { data, error } = await supabase

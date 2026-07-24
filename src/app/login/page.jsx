@@ -25,7 +25,13 @@ export default function LoginPage() {
       setError(error.message);
       return;
     }
-    router.push('/admin');
+    const { data: profile } = await supabase
+  .from('profiles')
+  .select('role')
+  .eq('id', (await supabase.auth.getUser()).data.user.id)
+  .single();
+
+router.push(profile?.role === 'admin' ? '/admin' : '/report');
   }
 
   return (
