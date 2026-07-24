@@ -63,7 +63,7 @@ export default function ReportPage() {
         try {
           const formData = new FormData();
           formData.append('file', file);
-          const aiResponse = await fetch('http://127.0.0.1:8000/ai/detect', {
+         const aiResponse = await fetch('https://road-safety-ai-service.onrender.com/ai/detect', {
             method: 'POST',
             body: formData,
           });
